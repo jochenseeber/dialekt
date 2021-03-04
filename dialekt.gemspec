@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+LIB_DIR = File.join(__dir__, "lib")
+$LOAD_PATH.unshift(LIB_DIR) unless $LOAD_PATH.include?(LIB_DIR)
+
+require "dialekt/version"
 require "json"
 require "pathname"
 
@@ -7,7 +11,7 @@ Gem::Specification.new do |spec|
   raise "RubyGems 2.0 or newer is required." unless spec.respond_to?(:metadata)
 
   spec.name = "dialekt"
-  spec.version = "0.1.0.dev"
+  spec.version = Dialekt::VERSION
   spec.summary = "DSL utilities"
 
   spec.required_ruby_version = ">= 2.6"
@@ -40,8 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "zeitwerk", "~> 2.3"
 
   spec.add_development_dependency "bundler", "~> 2.1"
-  spec.add_development_dependency "calificador", ">= 0.2.0.dev", "< 1.0.0"
-  spec.add_development_dependency "coveralls", "= 0.8.23.js"
+  spec.add_development_dependency "calificador", "~> 0.2.0"
   spec.add_development_dependency "debase", "~> 0.2"
   spec.add_development_dependency "minitest", "~> 5.14"
   spec.add_development_dependency "qed", "~> 2.9"
